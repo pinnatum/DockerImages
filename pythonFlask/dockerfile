@@ -1,0 +1,17 @@
+FROM python:3.12.5-slim
+
+RUN pip3 install flask \
+    && mkdir app \
+    && mkdir app/templates
+
+COPY app.py app/
+COPY templates/index.html app/templates/
+
+WORKDIR app
+
+EXPOSE 5000
+
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0" ]
+
+
+
